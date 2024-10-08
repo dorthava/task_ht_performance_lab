@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class task1 {
     public static int[] findWay(int n, int m) {
-        if (n <= 0 || m <= 0 || n == m) {
+        if (n <= 0 || m <= 0) {
             return null;
         }
 
@@ -13,12 +13,13 @@ public class task1 {
         }
 
         ArrayList<Integer> resultArrayList = new ArrayList<>();
+        boolean[] visited = new boolean[n];
         int i = 0;
-        while ((i + m - 1) % n != 0) {
+        while (!visited[i]) {
             resultArrayList.add(array[i]);
+            visited[i] = true;
             i = (i + m - 1) % n;
         }
-        resultArrayList.add(array[i]);
 
         int[] result = new int[resultArrayList.size()];
         for (int j = 0; j != result.length; ++j) {
